@@ -9,5 +9,7 @@
     <string name="send">Send</string>
     <string name="status">Status</string>
     <string name="send_title">Send to Walma</string>
+    <string name="title_activity_preferences">Preferences</string>
+    <string name="save">Save</string>
     
 </resources>

@@ -22,27 +22,15 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fi.opinsys.walma.R;
-
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.AssetFileDescriptor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -52,86 +40,42 @@ public class PostToWalma extends Activity {
 	Bundle extras;
 	Intent intent;
 	String action;
-
-	Button send;
-	TextView status;
-	EditText server;
-	EditText remote_key;
+	String server;
+	String remote_key;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_post_to_walma);
 
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
-		ImageView image = (ImageView) findViewById(R.id.imageview);
-
-		server = (EditText) findViewById(R.id.server);
-		remote_key = (EditText) findViewById(R.id.remote_key);
-
-		status = (TextView) findViewById(R.id.status);
-		send = (Button) findViewById(R.id.send);
-
-		server.setText(settings.getString("server", ""));
-		remote_key.setText(settings.getString("remote_key", ""));
+		server = settings.getString("server", "");
+		remote_key = settings.getString("remote_key", "");
 		
 		intent = getIntent();
 		extras = intent.getExtras();
 		action = intent.getAction();
 
-		if (isCalledByGallery()) {
-			setupSmallImg(image);
-		} else {
-			notify("Not called by gallery. Nothing to upload.");
-			setResult(RESULT_OK);
-			finish();
+		if (server.length() <= 1) {
+			PostToWalma.this.notify("Set server");
+			return;
+		}
+		if (remote_key.length() == 0) {
+			PostToWalma.this.notify("Set remote key");
+			return;
 		}
 
-		send.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				if (!isCalledByGallery()) {
-					PostToWalma.this
-							.notify("Not called by gallery. Nothing to upload.");
-				}
+		new UploadImageTask().execute();
 
-				if (server.getText().length() <= 1) {
-					PostToWalma.this.notify("Set server");
-					return;
-				}
-				if (remote_key.getText().length() == 0) {
-					PostToWalma.this.notify("Set remote key");
-					return;
-				}
-
-				new UploadImageTask().execute();
-
-			}
-		});
-
-	}
-
-	protected void onPause() {
-		super.onPause();
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-		Editor editor = settings.edit();
-		editor.putString("server", server.getText().toString());
-		editor.putString("remote_key", remote_key.getText().toString());
-		editor.commit();
-	}
-
-	private boolean isCalledByGallery() {
-		return Intent.ACTION_SEND.equals(action)
-				&& extras.containsKey(Intent.EXTRA_STREAM);
+		finish();
 	}
 
 	private void notify(CharSequence text) {
 		Context context = getApplicationContext();
 		Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
 		toast.show();
-		status.setText(text);
+		//status.setText(text);
 	}
 
 	private InputStream getImgInputStream() throws FileNotFoundException {
@@ -149,30 +93,9 @@ public class PostToWalma extends Activity {
 		return (Uri) extras.getParcelable(Intent.EXTRA_STREAM);
 	}
 
-	private AssetFileDescriptor getImgFile() throws FileNotFoundException {
-		ContentResolver cr = getContentResolver();
-		return cr.openAssetFileDescriptor(getImgUri(), "r");
-	}
-
 	private String getImgMimeType() {
 		ContentResolver cr = getContentResolver();
 		return cr.getType(getImgUri());
-	}
-
-	private void setupSmallImg(ImageView img) {
-
-		Bitmap bitmap;
-		try {
-			bitmap = BitmapFactory.decodeStream(getImgInputStream());
-			double scale = (double) bitmap.getHeight()
-					/ (double) bitmap.getWidth();
-			img.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 400,
-					(int) (400.0 * scale), true));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	private class UploadImageTask extends AsyncTask<Void, Void, Void> {
@@ -201,7 +124,7 @@ public class PostToWalma extends Activity {
 			httpclient.getParams().setParameter(
 					CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 			HttpPost httppost = new HttpPost(
-					server.getText() + "/api/create_multipart");
+					server + "/api/create_multipart");
 						
 			try {
 
@@ -209,7 +132,7 @@ public class PostToWalma extends Activity {
 						HttpMultipartMode.STRICT, null,
 						Charset.forName("UTF-8"));
 
-				entity.addPart("remote_key", escapeToStringBody(remote_key.getText()
+				entity.addPart("remote_key", escapeToStringBody(remote_key
 						.toString()));
 								
 				entity.addPart("image", new InputStreamBody(
