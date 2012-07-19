@@ -17,7 +17,7 @@
     android:weightSum="1">
 
     <TextView android:textColor="#fff" android:layout_height="wrap_content" android:layout_width="wrap_content"
-        android:id="@+id/textView1" android:text="@string/app_name" android:textSize="20dp"></TextView>
+        android:id="@+id/textView1" android:text="@string/send_title" android:textSize="20dp"></TextView>
     <ImageView android:src="@drawable/icon" android:background="#000" android:id="@+id/imageview" android:layout_width="fill_parent"
         android:layout_height="200dp" android:layout_weight="0.02" android:padding="20px"></ImageView>
     

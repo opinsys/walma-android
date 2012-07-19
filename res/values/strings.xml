@@ -3,11 +3,11 @@
     <string name="app_name">Walma Android</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_preferences">PreferencesActivity</string>
-    <string name="title_activity_post_to_walma">PostToWalma</string>
+    <string name="title_activity_post_to_walma">Walma</string>
     <string name="server">Server</string>
     <string name="remote_key">Remote key</string>
     <string name="send">Send</string>
-    <string name="status">Status	</string>
+    <string name="status">Status</string>
+    <string name="send_title">Send to Walma</string>
     
 </resources>
