@@ -1,4 +1,4 @@
-package com.example.walma_android;
+package fi.opinsys.walma;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,6 +21,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import fi.opinsys.walma.R;
 
 import android.app.Activity;
 import android.content.ContentResolver;

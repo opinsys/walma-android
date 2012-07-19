@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.walma_android"
+    package="fi.opinsys.walma"
     android:versionCode="1"
     android:versionName="1.0" >
 
