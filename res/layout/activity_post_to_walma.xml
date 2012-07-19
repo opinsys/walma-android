@@ -1,15 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<?xml version="1.0" encoding="utf-8"?>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="@dimen/padding_medium"
-        android:text="@string/hello_world"
-        tools:context=".PostToWalma" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:isScrollContainer="true" 
+        android:scrollbarAlwaysDrawVerticalTrack="true" 
+        android:scrollbarStyle="outsideInset" 
+        android:background="#000"
+        android:scrollbars="vertical">
 
-</RelativeLayout>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+
+    <TextView android:textColor="#fff" android:layout_height="wrap_content" android:layout_width="wrap_content"
+        android:id="@+id/textView1" android:text="@string/app_name" android:textSize="20dp"></TextView>
+    <ImageView android:src="@drawable/icon" android:background="#000" android:id="@+id/imageview" android:layout_width="fill_parent"
+        android:layout_height="200dp" android:layout_weight="0.02" android:padding="20px"></ImageView>
+    
+    
+    <TextView android:textColor="#fff" android:layout_height="wrap_content" android:text="@string/server"
+        android:layout_width="wrap_content" android:id="@+id/textView1"></TextView>
+	<EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/server"></EditText>
+    
+    <TextView android:textColor="#fff" android:layout_height="wrap_content" android:text="@string/remote_key"
+        android:layout_width="wrap_content" android:id="@+id/textView2"></TextView>
+	<EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/remote_key"></EditText>
+
+
+<Button android:layout_height="wrap_content" android:layout_width="fill_parent" android:text="@string/send" android:id="@+id/send"></Button>
+<TextView  android:textColor="#fff"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/status" android:text="@string/status"/>
+</LinearLayout>
+
+</ScrollView>
