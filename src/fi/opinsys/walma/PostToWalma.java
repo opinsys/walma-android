@@ -160,7 +160,7 @@ public class PostToWalma extends Activity {
 		}
 
 		public void onPreExecute() {
-			PostToWalma.this.notify("Sending image...");
+			PostToWalma.this.notify(getString(R.string.sending_image));
 		}
 
 		public void onPostExecute(Void n) {
@@ -192,10 +192,10 @@ public class PostToWalma extends Activity {
 				clipboard.setText(url);
 				
 				
-				PostToWalma.this.notify("Image sent! Copied url to clipboard: "
-						+ url);
+				PostToWalma.this.notify( getString(R.string.image_sent) + url );
+
 			} else {
-				PostToWalma.this.notify("Error sending picture: " + err);
+				PostToWalma.this.notify(getString(R.string.error_sending_picture) + err);
 			}
 		}
 

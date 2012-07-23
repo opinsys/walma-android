@@ -1,15 +1,16 @@
 <resources>
 
     <string name="app_name">Walma Android</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_post_to_walma">Walma</string>
     <string name="server">Server</string>
     <string name="remote_key">Remote key</string>
-    <string name="send">Send</string>
-    <string name="status">Status</string>
-    <string name="send_title">Send to Walma</string>
-    <string name="title_activity_preferences">Preferences</string>
+    <string name="title_activity_preferences">Walma Android Preferences</string>
     <string name="save">Save</string>
+    <string name="set_server">Set server</string>
+    <string name="set_remote_key">Set remote key</string>
+    <string name="sending_image">Sending image...</string>
+    <string name="image_sent">Image sent! Copied url to clipboard: </string>
+    <string name="error_sending_picture">Error sending picture: </string>
     
 </resources>
