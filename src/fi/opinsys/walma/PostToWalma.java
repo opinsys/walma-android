@@ -12,6 +12,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.InputStreamBody;
@@ -146,8 +147,10 @@ public class PostToWalma extends Activity {
 				ResponseHandler<String> responseHandler = new BasicResponseHandler();
 				res = httpclient.execute(httppost, responseHandler);
 
-			} catch (ClientProtocolException e) {
+			} catch (ClientProtocolException e) {				
 				err = e.toString();
+			} catch (HttpHostConnectException e) {
+				err = getString(R.string.can_not_connect_to_server);
 			} catch (IOException e) {
 				err = e.toString();
 			}
@@ -164,6 +167,12 @@ public class PostToWalma extends Activity {
 		}
 
 		public void onPostExecute(Void n) {
+			if (err != null) {
+				PostToWalma.this.notify( err );
+				return;
+			}
+			
+			
 			JSONObject json = null;
 			try {
 				json = new JSONObject(res);
