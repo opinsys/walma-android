@@ -18,7 +18,7 @@
 
         <activity
             android:name=".PostToWalma"
-            android:label="@string/title_activity_post_to_walma" >
+            android:theme="@android:style/Theme.Translucent">
            
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
