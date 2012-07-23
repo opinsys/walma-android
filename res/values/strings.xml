@@ -10,7 +10,7 @@
     <string name="set_server">Set server</string>
     <string name="set_remote_key">Set remote key</string>
     <string name="sending_image">Sending image...</string>
-    <string name="image_sent">Image sent! Copied url to clipboard: </string>
+    <string name="image_sent">Image sent! Walma url:&#160;</string>
     <string name="error_sending_picture">Error sending picture: </string>
     <string name="can_not_connect_to_server">Can\'t connect to server!</string>
     

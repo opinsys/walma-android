@@ -31,7 +31,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.ClipboardManager;
 import android.widget.Toast;
 
 
@@ -193,7 +192,7 @@ public class PostToWalma extends Activity {
 					url = "server did not give a url";
 				}
 				
-				PostToWalma.this.notify( getString(R.string.image_sent) + url );
+				PostToWalma.this.notify( getString(R.string.image_sent) + server + url );
 
 			} else {
 				PostToWalma.this.notify(getString(R.string.error_sending_picture) + err);

@@ -9,7 +9,7 @@
     <string name="set_server">Aseta palvelin</string>
     <string name="set_remote_key">Aseta avain</string>
     <string name="sending_image">Lähetetään kuvaa...</string>
-    <string name="image_sent">Kuva lähetetty!</string>
+    <string name="image_sent">Kuva lähetetty! Walman osoite:&#160;</string>
     <string name="error_sending_picture">Virhe kuvan lähetyksessä: </string>
     <string name="can_not_connect_to_server">Palvelimeen ei saada yhteyttä!</string>
     
