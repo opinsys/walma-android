@@ -57,13 +57,17 @@ public class PostToWalma extends Activity {
 		extras = intent.getExtras();
 		action = intent.getAction();
 
+	    Intent preferenceIntent = new Intent(this, Preferences.class);
+	    
 		if (server.length() <= 1) {
-			PostToWalma.this.notify("Set server");
-			return;
+			PostToWalma.this.notify(getString(R.string.set_server));
+	        startActivityForResult(preferenceIntent, 0);	        
+	        return;
 		}
 		if (remote_key.length() == 0) {
-			PostToWalma.this.notify("Set remote key");
-			return;
+			PostToWalma.this.notify(getString(R.string.set_remote_key));
+	        startActivityForResult(preferenceIntent, 0);
+	        return;
 		}
 
 		new UploadImageTask().execute();
