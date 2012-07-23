@@ -80,7 +80,6 @@ public class PostToWalma extends Activity {
 		Context context = getApplicationContext();
 		Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
 		toast.show();
-		//status.setText(text);
 	}
 
 	private InputStream getImgInputStream() throws FileNotFoundException {
@@ -184,11 +183,8 @@ public class PostToWalma extends Activity {
 			} catch (JSONException e) {
 				err = "Got mallformed json response from the server";
 			}
-			
-			
-			
+						
 			if (err == null) {
-				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 				String url;
 				
 				try {
@@ -196,10 +192,6 @@ public class PostToWalma extends Activity {
 				} catch (JSONException e) {
 					url = "server did not give a url";
 				}
-				
-				
-				clipboard.setText(url);
-				
 				
 				PostToWalma.this.notify( getString(R.string.image_sent) + url );
 
