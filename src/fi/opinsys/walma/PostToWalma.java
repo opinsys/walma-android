@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 
 
 public class PostToWalma extends Activity {
@@ -39,15 +40,20 @@ public class PostToWalma extends Activity {
 
 	Bundle extras;
 	Intent intent;
-	String action;
 	String server;
 	String camera_id;
+	
+	ProgressDialog dialog;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		dialog = ProgressDialog.show(this, null, getString(R.string.sending_image));
 
+		setContentView(R.layout.activity_post_to_walma);
+		
+		
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
 		server = settings.getString("server", "");
@@ -55,8 +61,7 @@ public class PostToWalma extends Activity {
 		
 		intent = getIntent();
 		extras = intent.getExtras();
-		action = intent.getAction();
-
+		
 	    Intent preferenceIntent = new Intent(this, Preferences.class);
 	    
 		if (server.length() <= 1) {
@@ -71,8 +76,6 @@ public class PostToWalma extends Activity {
 		}
 
 		new UploadImageTask().execute();
-
-		finish();
 	}
 
 	private void notify(CharSequence text) {
@@ -160,13 +163,10 @@ public class PostToWalma extends Activity {
 			return null;
 		}
 
-		public void onPreExecute() {
-			PostToWalma.this.notify(getString(R.string.sending_image));
-		}
-
 		public void onPostExecute(Void n) {
 			if (err != null) {
 				PostToWalma.this.notify( err );
+				PostToWalma.this.finish();
 				return;
 			}
 			
@@ -191,12 +191,12 @@ public class PostToWalma extends Activity {
 				} catch (JSONException e) {
 					url = "server did not give a url";
 				}
-				
-				PostToWalma.this.notify( getString(R.string.image_sent) + server + url );
 
+				PostToWalma.this.notify( getString(R.string.image_sent) + server + url );
 			} else {
 				PostToWalma.this.notify(getString(R.string.error_sending_picture) + err);
 			}
+			PostToWalma.this.finish();
 		}
 
 	}    
