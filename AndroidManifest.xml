@@ -18,8 +18,8 @@
 
         <activity
             android:name=".PostToWalma"
-            android:theme="@android:style/Theme.Translucent">
-           
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+			
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
