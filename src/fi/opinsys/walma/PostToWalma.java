@@ -125,6 +125,10 @@ public class PostToWalma extends Activity {
 		}
 
 		private void uploadImage() {
+			
+			if( server.substring( server.length() - 1 ).equals("/") ) {
+				server = server.substring(0, server.length() - 1);				
+			}
 
 			HttpClient httpclient = new DefaultHttpClient();
 			httpclient.getParams().setParameter(
