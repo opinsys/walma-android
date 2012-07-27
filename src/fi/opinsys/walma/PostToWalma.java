@@ -41,7 +41,7 @@ public class PostToWalma extends Activity {
 	Intent intent;
 	String action;
 	String server;
-	String remote_key;
+	String camera_id;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -51,7 +51,7 @@ public class PostToWalma extends Activity {
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
 		server = settings.getString("server", "");
-		remote_key = settings.getString("remote_key", "");
+		camera_id = settings.getString("camera_id", "");
 		
 		intent = getIntent();
 		extras = intent.getExtras();
@@ -64,8 +64,8 @@ public class PostToWalma extends Activity {
 	        startActivityForResult(preferenceIntent, 0);	        
 	        return;
 		}
-		if (remote_key.length() == 0) {
-			PostToWalma.this.notify(getString(R.string.set_remote_key));
+		if (camera_id.length() == 0) {
+			PostToWalma.this.notify(getString(R.string.set_camera_id));
 	        startActivityForResult(preferenceIntent, 0);
 	        return;
 		}
@@ -135,7 +135,7 @@ public class PostToWalma extends Activity {
 						HttpMultipartMode.STRICT, null,
 						Charset.forName("UTF-8"));
 
-				entity.addPart("remote_key", escapeToStringBody(remote_key
+				entity.addPart("cameraId", escapeToStringBody(camera_id
 						.toString()));
 								
 				entity.addPart("image", new InputStreamBody(

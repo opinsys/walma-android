@@ -16,7 +16,7 @@ public class Preferences extends Activity {
 
 	Button save;
 	EditText server;
-	EditText remote_key;
+	EditText camera_id;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -27,12 +27,12 @@ public class Preferences extends Activity {
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
 		server = (EditText) findViewById(R.id.server);
-		remote_key = (EditText) findViewById(R.id.remote_key);
+		camera_id = (EditText) findViewById(R.id.camera_id);
 
 		save = (Button) findViewById(R.id.save);
 
 		server.setText(settings.getString("server", ""));
-		remote_key.setText(settings.getString("remote_key", ""));
+		camera_id.setText(settings.getString("camera_id", ""));
 
 		save.setOnClickListener(new OnClickListener() {
 			@Override
@@ -47,7 +47,7 @@ public class Preferences extends Activity {
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 		Editor editor = settings.edit();
 		editor.putString("server", server.getText().toString());
-		editor.putString("remote_key", remote_key.getText().toString());
+		editor.putString("camera_id", camera_id.getText().toString());
 		editor.commit();
 	}
 
