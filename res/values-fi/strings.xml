@@ -1,16 +1,17 @@
 <resources>
-    <string name="app_name">Walma Android</string>
-    <string name="menu_settings">Asetukset</string>
-    <string name="title_activity_post_to_walma">Walma</string>
-    <string name="server">Palvelin</string>
-    <string name="remote_key">Avain</string>
-    <string name="title_activity_preferences">Walma Android asetukset</string>
-    <string name="save">Tallenna</string>
-    <string name="set_server">Aseta palvelin</string>
-    <string name="set_remote_key">Aseta avain</string>
-    <string name="sending_image">Lähetetään kuvaa...</string>
-    <string name="image_sent">Kuva lähetetty! Walman osoite:&#160;</string>
-    <string name="error_sending_picture">Virhe kuvan lähetyksessä: </string>
-    <string name="can_not_connect_to_server">Palvelimeen ei saada yhteyttä!</string>
+    
+<!--     <string name="app_name">Walma Android</string> -->
+<!--     <string name="menu_settings">Asetukset</string> -->
+<!--     <string name="title_activity_post_to_walma">Walma</string> -->
+<!--     <string name="server">Palvelin</string> -->
+<!--     <string name="remote_key">Avain</string> -->
+<!--     <string name="title_activity_preferences">Walma Android asetukset</string> -->
+<!--     <string name="save">Tallenna</string> -->
+<!--     <string name="set_server">Aseta palvelin</string> -->
+<!--     <string name="set_remote_key">Aseta avain</string> -->
+<!--     <string name="sending_image">Lähetetään kuvaa...</string> -->
+<!--     <string name="image_sent">Kuva lähetetty! Walman osoite:&#160;</string> -->
+<!--     <string name="error_sending_picture">Virhe kuvan lähetyksessä: </string> -->
+<!--     <string name="can_not_connect_to_server">Palvelimeen ei saada yhteyttä!</string> -->
     
 </resources>
