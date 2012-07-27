@@ -1,6 +1,10 @@
-# Walma Android
+# Walma Camera
 
-This Walma client you can send pictures to the [Walma](http://walma.opinsys.fi/ "Walma")
+Take a picture and share it to the [Walma](http://walma.opinsys.fi/ "Walma").
+
+# Installing
+
+Download [package](https://github.com/opinsys/walma-android/raw/master/apk/walma-android.apk) and install it to your Android device.
 
 # Copyright
 
