@@ -129,8 +129,8 @@ public class PostToWalma extends Activity {
 				server = "http://" + server;            
             }
 			
-			if( server.substring( server.length() - 1 ).equals("/") ) {
-				server = server.substring(0, server.length() - 1);				
+			if(server.endsWith("/")) {
+				server = server.substring(0, server.length() - 1);			
 			}
 
 			HttpClient httpclient = new DefaultHttpClient();
