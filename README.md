@@ -4,7 +4,7 @@ Take a picture and share it to the [Walma](http://walma.opinsys.fi/ "Walma").
 
 # Installing
 
-Download [package](https://github.com/opinsys/walma-android/raw/master/apk/walma-android.apk) and install it to your Android device.
+Download [package](https://github.com/opinsys/walma-android/walma-android.apk/qr_code) and install it to your Android device.
 
 # Copyright
 
