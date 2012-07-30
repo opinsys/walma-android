@@ -125,6 +125,9 @@ public class PostToWalma extends Activity {
 		}
 
 		private void uploadImage() {
+			if(!server.startsWith("http://") && !server.startsWith("https://")) {
+				server = "http://" + server;            
+            }
 			
 			if( server.substring( server.length() - 1 ).equals("/") ) {
 				server = server.substring(0, server.length() - 1);				
