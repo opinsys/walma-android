@@ -1,10 +1,14 @@
 # Walma Camera
 
-Take a picture and share it to the [Walma](http://walma.opinsys.fi/ "Walma").
+Take a picture and share it to the [Walma](http://walma.opinsys.fi/ "Walma"). If you have the Walma Projector running you can see picture on your web browser without doing anything.
 
 # Installing
 
-Download [package](https://github.com/opinsys/walma-android/walma-android.apk/qr_code) and install it to your Android device.
+Download the [package](https://github.com/opinsys/walma-android/walma-android.apk/qr_code) and install it to your Android device.
+
+# Usage
+
+Take a picture or start gallery application and select picture. Then tap share icon and select Walma Camera.
 
 # Copyright
 
